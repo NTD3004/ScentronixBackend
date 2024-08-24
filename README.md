@@ -17,6 +17,16 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+Api url returning reachable URL(s), ordered by priority where 1 is highest.
+```bash
+http://localhost:3000/checkserver
+```
+
+Api url returning reachable URL(s) by querying priority number.
+```bash
+http://localhost:3000/checkserver/{priorityNumber}
+```
+
 
 ## Run tests
 
