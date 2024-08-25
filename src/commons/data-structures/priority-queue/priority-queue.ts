@@ -13,13 +13,13 @@ export class PriorityQueue<T1, T2> implements PriorityQueueInterface<T1, T2> {
    * @param {T2} priority
    */
   enqueue(val: T1, priority: T2) {
-    let newNode = new Node(val, priority);
+    let newNode: NodeQueueInterface<T1, T2> = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
   }
   bubbleUp() {
     let idx = this.values.length - 1;
-    const element = this.values[idx];
+    const element: NodeQueueInterface<T1, T2> = this.values[idx];
     while(idx > 0){
       let parentIdx = Math.floor((idx - 1)/2);
       let parent = this.values[parentIdx];
@@ -45,7 +45,7 @@ export class PriorityQueue<T1, T2> implements PriorityQueueInterface<T1, T2> {
   sinkDown() {
     let idx = 0;
     const length = this.values.length;
-    const element = this.values[0];
+    const element: NodeQueueInterface<T1, T2> = this.values[0];
     while(true){
       let leftChildIdx = 2 * idx + 1;
       let rightChildIdx = 2 * idx + 2;
