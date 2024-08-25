@@ -1,13 +1,13 @@
-export interface PriorityQueueInterface {
+export interface PriorityQueueInterface<T1, T2> {
   /**
-   * @param {any} val
-   * @param {number} priority
+   * @param {T1} val
+   * @param {T2} priority
    */
-  enqueue(val: any, priority: number): void;
+  enqueue(val: T1, priority: T2): void;
   /**
    * @returns {NodeQueueInterface} The very first node in this queue
    */
-  dequeue(): NodeQueueInterface;
+  dequeue(): NodeQueueInterface<T1, T2>;
   bubbleUp(): void;
   sinkDown(): void;
   /**
@@ -16,8 +16,8 @@ export interface PriorityQueueInterface {
   size(): number;
 }
 
-export interface NodeQueueInterface {
-  val: any;
-  priority: number;
+export interface NodeQueueInterface<T1, T2> {
+  val: T1;
+  priority: T2;
 }
 

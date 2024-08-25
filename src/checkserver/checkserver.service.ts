@@ -34,7 +34,7 @@ export class CheckserverService {
   ];
 
   @Inject(PriorityQueue)
-  private priorityQueue: PriorityQueueInterface;
+  private priorityQueue: PriorityQueueInterface<any, number>;
 
   constructor(
     private readonly httpService: HttpService
@@ -64,7 +64,7 @@ export class CheckserverService {
     await this.failureDetection();
     const result = [];
     while (this.priorityQueue.size() > 0) {
-      const item: NodeQueueInterface = this.priorityQueue.dequeue();
+      const item: NodeQueueInterface<any, number> = this.priorityQueue.dequeue();
       result.push(item.val);
     }
     return result;
@@ -78,7 +78,7 @@ export class CheckserverService {
     await this.failureDetection();
     const result = [];
     while (this.priorityQueue.size() > 0) {
-      const item: NodeQueueInterface = this.priorityQueue.dequeue();
+      const item: NodeQueueInterface<any, number> = this.priorityQueue.dequeue();
       if (item.val.priority === getServerDto.priority) result.push(item.val);
     }
     return result;

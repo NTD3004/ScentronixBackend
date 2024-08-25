@@ -3,16 +3,16 @@ import { PriorityQueueInterface, NodeQueueInterface } from '@src/commons/data-st
 /**
  * @implements {PriorityQueueInterface}
  */
-export class PriorityQueue implements PriorityQueueInterface {
+export class PriorityQueue<T1, T2> implements PriorityQueueInterface<T1, T2> {
   private values: any[];
   constructor() {
     this.values = [];
   }
   /**
-   * @param {any} val
-   * @param {number} priority
+   * @param {T1} val
+   * @param {T2} priority
    */
-  enqueue(val: any, priority: number) {
+  enqueue(val: T1, priority: T2) {
     let newNode = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
@@ -33,7 +33,7 @@ export class PriorityQueue implements PriorityQueueInterface {
   /**
    * @returns {NodeQueueInterface} The very first node in this queue
    */
-  dequeue(): NodeQueueInterface {
+  dequeue(): NodeQueueInterface<T1, T2> {
     const min = this.values[0];
     const end = this.values.pop();
     if(this.values.length > 0){
@@ -81,15 +81,15 @@ export class PriorityQueue implements PriorityQueueInterface {
   }
 }
 
-class Node implements NodeQueueInterface {
-  val: any;
-  priority: number;
+class Node<T1, T2> implements NodeQueueInterface<T1, T2> {
+  val: T1;
+  priority: T2;
 
   /**
    * @param {any} val
    * @param {number} priority
    */
-  constructor(val: any, priority: number) {
+  constructor(val: T1, priority: T2) {
     this.val = val;
     this.priority = priority;
   }
